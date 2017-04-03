@@ -24,7 +24,7 @@ Enemy.prototype.update = function(dt) {
     this.x = ( 5*101 + this.x + (this.dir*dt*this.speed*30)) % (5*101) ;
     if (this.y === player.y) {
         if ( -50 < (this.x - player.x) &&  (this.x - player.x) < 50) {
-            alert ("chodu nalla BC !!!");
+            alert ("you suck LOSER !!!");
             newgame();
         }
     }
