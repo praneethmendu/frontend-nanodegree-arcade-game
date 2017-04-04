@@ -39,6 +39,7 @@ var Engine = (function(global) {
          * would be the same for everyone (regardless of how fast their
          * computer is) - hurray time!
          */
+        
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
@@ -180,4 +181,50 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+
+
+    
+    
+                     
 })(this);
+
+
+function game (level) {
+    //global variables
+    player =  new Player;        
+    allEnemies = [];
+    
+    var speeds = [], i;
+    for( i = 0; i < level; i++) {    speeds.push(i+2);  }
+    speeds = shuffle(speeds);
+
+    for( i = 0; i < level; i++) {
+        var dir, x;
+        if (Math.random() > 0.5) {
+            dir = 1;
+            x = 0;
+        } else {
+            dir = -1;
+            x = 4*101;
+        }
+
+        allEnemies.push( new Enemy(x, 60 + 83*3*i/(level-1), dir, speeds[i]) );
+        console.log(allEnemies)
+    }
+    h3.innerHTML = "level : "+ ( level - 3 );
+    document.body.insertBefore(h3, null);
+};
+
+var level; 
+function newgame () {
+    level = 4;
+    game(level)
+
+}
+
+function next () {
+    level++;
+    game(level)
+}
+
+newgame();
